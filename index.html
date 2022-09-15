@@ -77,6 +77,28 @@
             <td> one and half hour</td>
         </tr>
     </table>
-
+    <hr>
+    <h2>Code Display</h2>
+    <blockquote cite=“https://stackoverflow.com/questions/73709720/i-need-to-create-a-reanimating-3d-model-from-screenscreen-video-any-idea-how”> I need to create a reanimating 3d model from screenscreen video, any idea how? </blockquote >
+    <pre>
+            /// Apply `$function` with `$args` to each item from `$list`.
+            /// @author Kitty Giraudel
+            /// @param {List} $list - List of items
+            /// @param {String} $function - Function to apply to every item from `$list`
+            /// @param {Arglist} $args - Extra arguments to pass to `$function`
+            /// @return {List}
+            /// @throw There is no `#{$function}` function.
+            @function walk($list, $function, $args...) {
+            @if not function-exists($function) {
+                @error "There is no `#{$function}` function.";
+            }
+            
+            @for $i from 1 through length($list) {
+                $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
+            }
+            
+            @return $list;
+            }
+    </pre>
     </body>
 </html>
